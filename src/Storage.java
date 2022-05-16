@@ -12,15 +12,18 @@ public class Storage
     private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(10));
 
     private ArrayList<String> inventory = new ArrayList<String>();
+    private int sum;
 
     public Storage()
     {
         this.inventory = new ArrayList<String>();
+        this.sum = 10;
     }
 
     public Storage(ArrayList<String> inventory)
     {
         this.inventory = inventory;
+        this.sum = 10;
     }
 
     public ArrayList<String> getFISH()
@@ -43,13 +46,19 @@ public class Storage
         return this.inventory;
     }
 
+    public int getSum()
+    {
+        return this.sum;
+    }
+
     // This method is an example of how to take some information and write it into a file!
     public void save() {
         try {
             File f = new File("src/Storage.data");
             f.createNewFile(); // this method will create the file if it does not exist, if it does exist, it does nothing
             FileWriter fw = new FileWriter("src/Storage.data");
-            fw.write("\n");
+            fw.write(inventory + "\n");
+            fw.write(sum);
             fw.close();
         }
         catch (IOException e) {
