@@ -7,10 +7,9 @@ import java.util.Arrays;
 
 public class Storage
 {
-    private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("Fish"));
-    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Fish"));
-    private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(10));
-
+    private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray"));
+    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
+    private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90, 100));
     private ArrayList<String> inventory = new ArrayList<String>();
     private int sum;
 
@@ -46,24 +45,28 @@ public class Storage
         return this.inventory;
     }
 
+    public void addInventory(String item)
+    {
+        this.inventory.add(item);
+    }
+
+    public void removeInventory(String item)
+    {
+        this.inventory.remove(item);
+    }
+
     public int getSum()
     {
         return this.sum;
     }
 
-    // This method is an example of how to take some information and write it into a file!
-    public void save() {
-        try {
-            File f = new File("src/Storage.data");
-            f.createNewFile(); // this method will create the file if it does not exist, if it does exist, it does nothing
-            FileWriter fw = new FileWriter("src/Storage.data");
-            fw.write(inventory + "\n");
-            fw.write(sum);
-            fw.close();
-        }
-        catch (IOException e) {
-            System.out.println("Unable to create file");
-            e.printStackTrace();
-        }
+    public void addSum(int sum)
+    {
+        this.sum += sum;
+    }
+
+    public void subtractSum(int sum)
+    {
+        this.sum -= sum;
     }
 }

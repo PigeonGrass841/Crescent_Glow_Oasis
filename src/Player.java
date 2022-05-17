@@ -26,8 +26,8 @@ public class Player extends Storage
             f.createNewFile(); // this method will create the file if it does not exist, if it does exist, it does nothing
             FileWriter fw = new FileWriter("src/Player.data");
             fw.write(name + "\n");
-            fw.write(getInventory() + "\n");
-            fw.write(getSum());
+            fw.write(super.getInventory() + "\n");
+            fw.write(super.getSum());
             fw.close();
         }
         catch (IOException e) {
