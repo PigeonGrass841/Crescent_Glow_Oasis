@@ -8,21 +8,19 @@ import java.util.Arrays;
 public class Storage
 {
     private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray"));
-    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
+    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray", "Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
     private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90, 100));
     private ArrayList<String> inventory = new ArrayList<String>();
-    private int sum;
+    private int sum = 10;
 
     public Storage()
     {
         this.inventory = new ArrayList<String>();
-        this.sum = 10;
     }
 
     public Storage(ArrayList<String> inventory)
     {
         this.inventory = inventory;
-        this.sum = 10;
     }
 
     public ArrayList<String> getFISH()
@@ -43,6 +41,11 @@ public class Storage
     public ArrayList<String> getInventory()
     {
         return this.inventory;
+    }
+
+    public void setInventory(ArrayList<String> inventory)
+    {
+        this.inventory = inventory;
     }
 
     public void addInventory(String item)

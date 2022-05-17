@@ -19,15 +19,34 @@ public class Player extends Storage
         this.name = name;
     }
 
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String greet() {
+        if (name.equals("") && super.getInventory().equals(new ArrayList<String>())) {
+            return "Welcome! Before we allow you to start, we need to identify the vistor";
+        }
+        else {
+            return "Name: " + name + "\n" + "Inventory: " + super.getInventory();
+        }
+    }
+
     // This method is an example of how to take some information and write it into a file!
     public void save() {
         try {
-            File f = new File("src/Player.data");
+            File f = new File("src/player.data");
             f.createNewFile(); // this method will create the file if it does not exist, if it does exist, it does nothing
-            FileWriter fw = new FileWriter("src/Player.data");
+            FileWriter fw = new FileWriter("src/player.data");
             fw.write(name + "\n");
             fw.write(super.getInventory() + "\n");
-            fw.write(super.getSum());
+            fw.write(String.valueOf(super.getSum()));
             fw.close();
         }
         catch (IOException e) {

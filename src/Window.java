@@ -14,7 +14,7 @@ public class Window
         JFrame j = new JFrame();
         j.setSize(1000, 750);
         j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        j.setTitle("Crescent Glow Oasis");
+        j.setTitle("h");
         j.setVisible(true);
     }
 }
