@@ -13,9 +13,9 @@ public class Player extends Storage
         this.name = "";
     }
 
-    public Player(String name, ArrayList<String> inventory)
+    public Player(String name, ArrayList<String> inventory, int sum)
     {
-        super(inventory);
+        super(inventory, sum);
         this.name = name;
     }
 
@@ -45,7 +45,7 @@ public class Player extends Storage
             f.createNewFile(); // this method will create the file if it does not exist, if it does exist, it does nothing
             FileWriter fw = new FileWriter("src/player.data");
             fw.write(name + "\n");
-            fw.write(super.getInventory() + "\n");
+            fw.write(super.getInventory().toString() + "\n");
             fw.write(String.valueOf(super.getSum()));
             fw.close();
         }

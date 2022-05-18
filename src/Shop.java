@@ -1,15 +1,25 @@
+import java.util.ArrayList;
+
 public class Shop extends Storage
 {
+    private Player user;
+
+    public Shop(Player user)
+    {
+        super();
+        this.user = user;
+    }
+
     public void sellItem(String item)
     {
-        int index = super.getInventory().indexOf(item);
+        int index = user.getInventory().indexOf(item);
         int items = super.getITEMS().indexOf(item);
 
         if (index != -1)
         {
             System.out.println("Thanks for selling a " + item);
-            super.removeInventory(item);
-            super.addSum(super.getPRICES().get(items));
+            user.removeInventory(item);
+            user.addSum(super.getPRICES().get(items));
         }
         else
         {
@@ -28,15 +38,15 @@ public class Shop extends Storage
     {
         int items = super.getITEMS().indexOf(item);
 
-        if ((items != -1) && (super.getSum() >= super.getPRICES().get(items)))
+        if ((items != -1) && (user.getSum() >= super.getPRICES().get(items)))
         {
-            System.out.println("Thanks for buying a " + item);
-            super.addInventory(item);
-            super.subtractSum(super.getPRICES().get(items));
+            System.out.println("Thanks for buying the " + item);
+            user.addInventory(item);
+            user.subtractSum(super.getPRICES().get(items));
         }
         else
         {
-            if (items != -1)
+            if (items == -1)
             {
                 System.out.println("There is no " + item + " in our inventory");
             }

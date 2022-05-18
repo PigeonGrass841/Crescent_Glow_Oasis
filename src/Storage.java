@@ -18,9 +18,10 @@ public class Storage
         this.inventory = new ArrayList<String>();
     }
 
-    public Storage(ArrayList<String> inventory)
+    public Storage(ArrayList<String> inventory, int sum)
     {
         this.inventory = inventory;
+        this.sum = sum;
     }
 
     public ArrayList<String> getFISH()

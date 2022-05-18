@@ -18,6 +18,7 @@ public class Oasis
 
             String name = "";
             ArrayList<String> inventory = new ArrayList<String>();
+            int sum = 10;
 
             // reading from the file line by line
             int line = 1;
@@ -33,17 +34,22 @@ public class Oasis
                     while (data.contains(","))
                     {
                         inventory.add(data.substring(1, data.indexOf(",")));
-                        data = data.substring(data.indexOf(","));
+                        data = data.substring(data.indexOf(",") + 1);
                     }
+                    inventory.add(data.substring(1, data.indexOf("]")));
+                }
+                if (line == 3)
+                {
+                    sum = Integer.parseInt(data);
                 }
                 line++;
             }
             s.close();
 
-            Player user = new Player(name, inventory);
+            Player user = new Player(name, inventory, sum);
             System.out.println(user.greet());
 
-            System.out.println("Welcome to the Crescent Glow Oasis. You can fish and sell your items in the shop.");
+            System.out.println("\nWelcome to the Crescent Glow Oasis. You can fish and sell or buy items in the shop.");
             System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Leave");
             System.out.print("Choice: ");
 
@@ -52,24 +58,76 @@ public class Oasis
 
             while (!(choice.equals("4")))
             {
+                // Choice [1] Go fishing
                 if (choice.equals("1"))
                 {
-                    System.out.print("Welcome to the oasis, press [enter] to leave and [f] to cast your rod: ");
+                    System.out.print("\nWelcome to the oasis, press [enter] to leave and [c] to cast your rod: ");
                     choice = input.nextLine();
 
                     Fish oasis = new Fish();
-                    while (choice.equals("f"))
+                    while (choice.equals("c"))
                     {
-                        oasis.fish();
+                        System.out.println();
+                        user.addInventory(oasis.fish());
+                        System.out.print("Cast?: ");
                         choice = input.nextLine();
                     }
 
-                    System.out.println("Leaving the oasis . . .");
+                    System.out.println("\nLeaving the oasis . . .");
                 }
+                // Choice [2] Enter the shop
+                if (choice.equals("2"))
+                {
+                    Shop counter = new Shop(user);
+
+                    System.out.println("\nThanks for coming to the shop, would you like to sell or buy something?");
+                    System.out.println("[1] Sell something\n[2] Buy something");
+                    System.out.print("Choice: ");
+
+                    choice = input.nextLine();
+
+                    // Choice [1] Sell something
+                    if (choice.equals("1"))
+                    {
+                        System.out.println("\nInventory: " + user.getInventory());
+                        System.out.print("Enter the name of the item you want to sell: ");
+
+                        choice = input.nextLine();
+
+                        counter.sellItem(choice);
+                    }
+                    // Choice [2] Buy something
+                    if (choice.equals("2"))
+                    {
+                        System.out.println();
+                        for (int i = 0; i < counter.getITEMS().size(); i++)
+                        {
+                            System.out.println(counter.getITEMS().get(i) + ": $" + counter.getPRICES().get(i));
+                        }
+
+                        System.out.println("\nSum: " + user.getSum());
+                        System.out.print("Enter the name of the item you want to buy: ");
+                        choice = input.nextLine();
+
+                        counter.buyItem(choice);
+                    }
+                }
+                // Choice [3] Check inventory and sum
+                if (choice.equals("3"))
+                {
+                    System.out.println("\nInventory: " + user.getInventory());
+                    System.out.println("Sum: " + user.getSum());
+                }
+
+                System.out.println("\nYou can fish and sell or buy items in the shop.");
+                System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Leave");
+                System.out.print("Choice: ");
+
+                choice = input.nextLine();
             }
 
             user.save();
-            System.out.println("Data saved. See you later!");
+            System.out.println("\nData saved. See you later!");
         }
         // if the file doesn't exist, we will create a blank Player object and ask them for a name and hobby
         catch (FileNotFoundException e) {
