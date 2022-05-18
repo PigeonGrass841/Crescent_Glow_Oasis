@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class Oasis
             ArrayList<String> inventory = new ArrayList<String>();
             int sum = 10;
 
-            // reading from the file line by line
+            // Reading from the file line by line
             int line = 1;
             while (s.hasNextLine())
             {
@@ -31,12 +32,7 @@ public class Oasis
                 }
                 if (line == 2)
                 {
-                    while (data.contains(","))
-                    {
-                        inventory.add(data.substring(1, data.indexOf(",")));
-                        data = data.substring(data.indexOf(",") + 1);
-                    }
-                    inventory.add(data.substring(1, data.indexOf("]")));
+                    inventory = new ArrayList<String>();
                 }
                 if (line == 3)
                 {
@@ -64,11 +60,10 @@ public class Oasis
                     System.out.print("\nWelcome to the oasis, press [enter] to leave and [c] to cast your rod: ");
                     choice = input.nextLine();
 
-                    Fish oasis = new Fish();
+                    Fish oasis = new Fish(user);
                     while (choice.equals("c"))
                     {
-                        System.out.println();
-                        user.addInventory(oasis.fish());
+                        oasis.fish();
                         System.out.print("Cast?: ");
                         choice = input.nextLine();
                     }
