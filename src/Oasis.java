@@ -32,7 +32,16 @@ public class Oasis
                 }
                 if (line == 2)
                 {
-                    inventory = new ArrayList<String>();
+                    if (!(data.equals("[]")))
+                    {
+                        while (data.contains(","))
+                        {
+                            inventory.add(data.substring(1, data.indexOf(",")));
+                            data = data.substring(data.indexOf(","));
+                            data = data.substring(data.indexOf(",") + 1);
+                        }
+                        inventory.add(data.substring(1, data.indexOf("]")));
+                    }
                 }
                 if (line == 3)
                 {
@@ -43,7 +52,7 @@ public class Oasis
             s.close();
 
             Player user = new Player(name, inventory, sum);
-            System.out.println(user.greet());
+            System.out.println(user.welcome());
 
             System.out.println("\nWelcome to the Crescent Glow Oasis. You can fish and sell or buy items in the shop.");
             System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Leave");
@@ -84,12 +93,25 @@ public class Oasis
                     // Choice [1] Sell something
                     if (choice.equals("1"))
                     {
-                        System.out.println("\nInventory: " + user.getInventory());
-                        System.out.print("Enter the name of the item you want to sell: ");
+                        System.out.println("[1] Sell something\n[2] Sell all");
+                        System.out.print("Choice: ");
 
                         choice = input.nextLine();
 
-                        counter.sellItem(choice);
+                        if (choice.equals("1"))
+                        {
+                            System.out.println("\nInventory: " + user.getInventory());
+                            System.out.print("Enter the name of the item you want to sell: ");
+
+                            choice = input.nextLine();
+
+                            counter.sellItem(choice);
+                        }
+                        if (choice.equals("2"))
+                        {
+                            counter.sellItemAll();
+                            choice = "1";
+                        }
                     }
                     // Choice [2] Buy something
                     if (choice.equals("2"))
@@ -124,10 +146,11 @@ public class Oasis
             user.save();
             System.out.println("\nData saved. See you later!");
         }
-        // if the file doesn't exist, we will create a blank Player object and ask them for a name and hobby
+        // if the file doesn't exist, we will create a blank Player object and ask them for a name
         catch (FileNotFoundException e) {
             Player user = new Player();
-            System.out.println(user.greet());
+
+            System.out.println(user.welcome());
             System.out.print("Name: ");
 
             Scanner input = new Scanner(System.in);

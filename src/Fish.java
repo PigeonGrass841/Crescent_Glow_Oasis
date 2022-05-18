@@ -1,6 +1,7 @@
 public class Fish extends Storage
 {
     private Player user;
+
     public Fish(Player user)
     {
         this.user = user;

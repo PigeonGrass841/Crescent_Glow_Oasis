@@ -17,9 +17,9 @@ public class Shop extends Storage
 
         if (index != -1)
         {
-            System.out.println("Thanks for selling a " + item);
             user.removeInventory(item);
             user.addSum(super.getPRICES().get(items));
+            System.out.println("Thanks for selling a " + item);
         }
         else
         {
@@ -31,6 +31,14 @@ public class Shop extends Storage
             {
                 System.out.println("We cannot accept that");
             }
+        }
+    }
+
+    public void sellItemAll()
+    {
+        for (int i = user.getInventory().size() - 1; i >= 0; i--)
+        {
+            sellItem(user.getInventory().get(i));
         }
     }
 

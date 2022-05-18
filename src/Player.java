@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player extends Storage
 {
@@ -29,7 +30,8 @@ public class Player extends Storage
         this.name = name;
     }
 
-    public String greet() {
+    public String welcome()
+    {
         if (name.equals("") && super.getInventory().equals(new ArrayList<String>())) {
             return "Welcome! Before we allow you to start, we need to identify the vistor";
         }
@@ -39,7 +41,8 @@ public class Player extends Storage
     }
 
     // This method is an example of how to take some information and write it into a file!
-    public void save() {
+    public void save()
+    {
         try {
             File f = new File("src/player.data");
             f.createNewFile(); // this method will create the file if it does not exist, if it does exist, it does nothing
