@@ -1,11 +1,12 @@
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 import java.io.IOException;
 import java.io.FileNotFoundException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 
@@ -66,18 +67,8 @@ public class Oasis
                 // Choice [1] Go fishing
                 if (choice.equals("1"))
                 {
-                    System.out.print("\nWelcome to the oasis, press [enter] to leave and [c] to cast your rod: ");
-                    choice = input.nextLine();
-
                     Fish oasis = new Fish(user);
-                    while (choice.equals("c"))
-                    {
-                        oasis.fish();
-                        System.out.print("Cast?: ");
-                        choice = input.nextLine();
-                    }
-
-                    System.out.println("\nLeaving the oasis . . .");
+                    oasis.fish();
                 }
                 // Choice [2] Enter the shop
                 if (choice.equals("2"))
@@ -93,20 +84,17 @@ public class Oasis
                     // Choice [1] Sell something
                     if (choice.equals("1"))
                     {
-                        System.out.println("[1] Sell something\n[2] Sell all");
+                        System.out.println("\n[1] Sell an item\n[2] Sell all items");
                         System.out.print("Choice: ");
 
                         choice = input.nextLine();
 
+                        // Choice [1] Sell an item
                         if (choice.equals("1"))
                         {
-                            System.out.println("\nInventory: " + user.getInventory());
-                            System.out.print("Enter the name of the item you want to sell: ");
-
-                            choice = input.nextLine();
-
-                            counter.sellItem(choice);
+                            counter.sellItem();
                         }
+                        // Choice [2] Sell all items
                         if (choice.equals("2"))
                         {
                             counter.sellItemAll();
@@ -116,17 +104,7 @@ public class Oasis
                     // Choice [2] Buy something
                     if (choice.equals("2"))
                     {
-                        System.out.println();
-                        for (int i = 0; i < counter.getITEMS().size(); i++)
-                        {
-                            System.out.println(counter.getITEMS().get(i) + ": $" + counter.getPRICES().get(i));
-                        }
-
-                        System.out.println("\nSum: " + user.getSum());
-                        System.out.print("Enter the name of the item you want to buy: ");
-                        choice = input.nextLine();
-
-                        counter.buyItem(choice);
+                        counter.buyItem();
                     }
                 }
                 // Choice [3] Check inventory and sum

@@ -64,6 +64,11 @@ public class Storage
         return this.sum;
     }
 
+    public void setSum(int sum)
+    {
+        this.sum = sum;
+    }
+
     public void addSum(int sum)
     {
         this.sum += sum;
