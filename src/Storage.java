@@ -8,10 +8,10 @@ import java.util.Arrays;
 public class Storage
 {
     private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray"));
-    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray", "Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
-    private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(10, 20, 30, 40, 50, 60, 70, 80, 90, 100));
+    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray", "Bait", "Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
+    private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(5, 10, 15, 20, 25, 5, 60, 70, 80, 90, 100));
     private ArrayList<String> inventory = new ArrayList<String>();
-    private int sum = 10;
+    private int sum = 15;
 
     public Storage()
     {
@@ -77,5 +77,18 @@ public class Storage
     public void subtractSum(int sum)
     {
         this.sum -= sum;
+    }
+
+    public int getBaitNum()
+    {
+        int baitNum = 0;
+        for (String item : inventory)
+        {
+            if (item.equals("Bait"))
+            {
+                baitNum++;
+            }
+        }
+        return baitNum;
     }
 }

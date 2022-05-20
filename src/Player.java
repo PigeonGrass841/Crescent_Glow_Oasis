@@ -39,7 +39,7 @@ public class Player extends Storage
             return "Welcome! Before we allow you to start, we need to identify the vistor";
         }
         else {
-            return "Name: " + name + "\n" + "Inventory: " + super.getInventory();
+            return "Name: " + name + "\nInventory: " + super.getInventory();
         }
     }
 

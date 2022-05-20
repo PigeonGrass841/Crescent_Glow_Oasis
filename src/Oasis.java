@@ -20,7 +20,7 @@ public class Oasis
 
             String name = "";
             ArrayList<String> inventory = new ArrayList<String>();
-            int sum = 10;
+            int sum = 15;
 
             // Reading from the file line by line
             int line = 1;
@@ -38,7 +38,6 @@ public class Oasis
                         while (data.contains(","))
                         {
                             inventory.add(data.substring(1, data.indexOf(",")));
-                            data = data.substring(data.indexOf(","));
                             data = data.substring(data.indexOf(",") + 1);
                         }
                         inventory.add(data.substring(1, data.indexOf("]")));
@@ -56,13 +55,13 @@ public class Oasis
             System.out.println(user.welcome());
 
             System.out.println("\nWelcome to the Crescent Glow Oasis. You can fish and sell or buy items in the shop.");
-            System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Leave");
+            System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Resort to capitalism\n[5] Leave");
             System.out.print("Choice: ");
 
             Scanner input = new Scanner(System.in);
             String choice = input.nextLine();
 
-            while (!(choice.equals("4")))
+            while (!(choice.equals("5")))
             {
                 // Choice [1] Go fishing
                 if (choice.equals("1"))
@@ -104,7 +103,21 @@ public class Oasis
                     // Choice [2] Buy something
                     if (choice.equals("2"))
                     {
-                        counter.buyItem();
+                        System.out.println("\n[1] Buy an item\n[2] Buy an item in bulk");
+                        System.out.print("Choice: ");
+
+                        choice = input.nextLine();
+
+                        // Choice [1] Buy an item
+                        if (choice.equals("1"))
+                        {
+                            counter.buyItem();
+                        }
+                        // Choice [2] Buy an item in bulk
+                        if (choice.equals("2"))
+                        {
+                            counter.buyItemAll();
+                        }
                     }
                 }
                 // Choice [3] Check inventory and sum
@@ -113,9 +126,15 @@ public class Oasis
                     System.out.println("\nInventory: " + user.getInventory());
                     System.out.println("Sum: " + user.getSum());
                 }
+                // Choice [4] Resort to capitalism
+                if (choice.equals("4"))
+                {
+                    System.out.println("\nYou found a job at McDonalads and earned 1 sum");
+                    user.addSum(1);
+                }
 
                 System.out.println("\nYou can fish and sell or buy items in the shop.");
-                System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Leave");
+                System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Resort to capitalism\n[5] Leave");
                 System.out.print("Choice: ");
 
                 choice = input.nextLine();

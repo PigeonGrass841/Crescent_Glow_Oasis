@@ -26,7 +26,7 @@ public class Shop extends Storage
         {
             user.removeInventory(item);
             user.addSum(super.getPRICES().get(items));
-            System.out.println("Thanks for selling a " + item);
+            System.out.println("Thanks for selling the " + item);
         }
         else
         {
@@ -93,6 +93,46 @@ public class Shop extends Storage
             System.out.println("Thanks for buying the " + item);
             user.addInventory(item);
             user.subtractSum(super.getPRICES().get(items));
+        }
+        else
+        {
+            if (items == -1)
+            {
+                System.out.println("There is no " + item + " in our inventory");
+            }
+            else
+            {
+                System.out.println("There is not enough sum");
+            }
+        }
+    }
+
+    public void buyItemAll()
+    {
+        System.out.println();
+        for (int i = 0; i < getITEMS().size(); i++)
+        {
+            System.out.println(getITEMS().get(i) + ": $" + getPRICES().get(i));
+        }
+
+        System.out.println("\nSum: " + user.getSum());
+        System.out.print("Enter the name of the item you want to buy in bulk: ");
+
+        Scanner input = new Scanner(System.in);
+        String item = input.nextLine();
+
+        int items = super.getITEMS().indexOf(item);
+
+        if ((items != -1) && (user.getSum() >= super.getPRICES().get(items)))
+        {
+            int count = 0;
+            while (user.getSum() >= super.getPRICES().get(items))
+            {
+                user.addInventory(item);
+                user.subtractSum(super.getPRICES().get(items));
+                count++;
+            }
+            System.out.println("Thanks for buying " + count + " " + item + "s");
         }
         else
         {
