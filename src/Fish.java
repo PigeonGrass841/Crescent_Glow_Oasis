@@ -11,6 +11,7 @@ public class Fish extends Storage
 
     public void fish()
     {
+        // Welcomes the user and provides a brief explanation of how to fish
         System.out.println("\nWelcome to the oasis, you need [Bait] to fish");
         System.out.println("Number of Bait: " + user.getBaitNum());
         System.out.print("Press [enter] to leave and [c] to cast your rod: ");
@@ -18,8 +19,10 @@ public class Fish extends Storage
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
 
+        // If the user contains the item [Bait] in their inventory allow them to fish
         if (user.getInventory().contains("Bait"))
         {
+            // If the user enters c and has the item [Bait] add a random fish to their inventory
             while (choice.equals("c") && user.getBaitNum() > 0)
             {
                 user.removeInventory("Bait");
@@ -43,7 +46,8 @@ public class Fish extends Storage
                 choice = input.nextLine();
             }
         }
-        else
+        // If the user's inventory has no [Bait], stop fishing
+        if (user.getBaitNum() <= 0)
         {
             System.out.println("\nYou do not possess enough [Bait] to continue fishing. Buy more [Bait] at the shop");
         }

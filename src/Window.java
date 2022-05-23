@@ -5,22 +5,11 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-import javax.swing.JFrame;
-
 public class Window
 {
-    public Window()
-    {
-        JFrame j = new JFrame();
-        j.setSize(1000, 750);
-        j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        j.setTitle("h");
-        j.setVisible(true);
-    }
-
     public void runWindow(Player user)
     {
-        System.out.println(user.welcome());
+        System.out.print(user.welcome());
 
         System.out.println("\nWelcome to the Crescent Glow Oasis. You can fish and sell or buy items in the shop.");
         System.out.println("[1] Go fishing\n[2] Enter the shop\n[3] Check inventory and sum\n[4] Resort to capitalism\n[5] Leave");
@@ -28,6 +17,8 @@ public class Window
 
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine();
+
+        boolean dropBurger = false;
 
         while (!(choice.equals("5")))
         {
@@ -97,8 +88,24 @@ public class Window
             // Choice [4] Resort to capitalism
             if (choice.equals("4"))
             {
-                System.out.println("\nYou found a job at McDonalads and earned 1 sum");
-                user.addSum(1);
+                if (!dropBurger)
+                {
+                    int dropChance = (int)(Math.random() * 100);
+                    if (dropChance > 1)
+                    {
+                        System.out.println("\nYou found a job at McDonalads and earned 1 sum");
+                        user.addSum(1);
+                    }
+                    else
+                    {
+                        System.out.println("\nYou dropped a burger and got fired from McDonalads :(");
+                        dropBurger = true;
+                    }
+                }
+                else
+                {
+                    System.out.println("\nMcDonalads refuses to hire you. You dropped a burger after all :(");
+                }
             }
 
             System.out.println("\nYou can fish and sell or buy items in the shop.");

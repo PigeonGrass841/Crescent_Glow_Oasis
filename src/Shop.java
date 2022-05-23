@@ -11,6 +11,7 @@ public class Shop extends Storage
         this.user = user;
     }
 
+    // Removes the item from the inventory and increments the sum by its corresponding price
     public void sellItem()
     {
         System.out.println("\nInventory: " + user.getInventory());
@@ -32,7 +33,7 @@ public class Shop extends Storage
         {
             if (items != -1)
             {
-                System.out.println("There is no " + item + " in your inventory");
+                System.out.println("That item does not exist in your inventory");
             }
             else
             {
@@ -41,10 +42,12 @@ public class Shop extends Storage
         }
     }
 
+    // Removes each item from the inventory and increments the sum by their respective prices
     public void sellItemAll()
     {
         String item;
 
+        System.out.println();
         for (int i = user.getInventory().size() - 1; i >= 0; i--)
         {
             item = user.getInventory().get(i);
@@ -56,13 +59,13 @@ public class Shop extends Storage
             {
                 user.removeInventory(item);
                 user.addSum(super.getPRICES().get(items));
-                System.out.println("Thanks for selling a " + item);
+                System.out.println("Thanks for selling the " + item);
             }
             else
             {
                 if (items != -1)
                 {
-                    System.out.println("There is no " + item + " in your inventory");
+                    System.out.println("That item does not exist in your inventory");
                 }
                 else
                 {
@@ -72,6 +75,7 @@ public class Shop extends Storage
         }
     }
 
+    // Adds the item to the inventory and decrements the sum by its corresponding price
     public void buyItem()
     {
         System.out.println();
@@ -98,7 +102,7 @@ public class Shop extends Storage
         {
             if (items == -1)
             {
-                System.out.println("There is no " + item + " in our inventory");
+                System.out.println("That item does not exist in our inventory");
             }
             else
             {
@@ -107,6 +111,7 @@ public class Shop extends Storage
         }
     }
 
+    //// Adds the item to the inventory and decrements the sum by their respective prices until the price exceeds the sum
     public void buyItemAll()
     {
         System.out.println();
@@ -132,13 +137,21 @@ public class Shop extends Storage
                 user.subtractSum(super.getPRICES().get(items));
                 count++;
             }
-            System.out.println("Thanks for buying " + count + " " + item + "s");
+
+            if (count > 1)
+            {
+                System.out.println("Thanks for buying " + count + " " + item + "s");
+            }
+            else
+            {
+                System.out.println("Thanks for buying " + count + " " + item);
+            }
         }
         else
         {
             if (items == -1)
             {
-                System.out.println("There is no " + item + " in our inventory");
+                System.out.println("That item does not exist in our inventory");
             }
             else
             {

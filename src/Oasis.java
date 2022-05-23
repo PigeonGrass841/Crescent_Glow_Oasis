@@ -51,17 +51,17 @@ public class Oasis
             }
             s.close();
 
-            Window tab = new Window();
-
+            // Creates a new Player object and runs the program's logic
             Player user = new Player(name, inventory, sum);
+
+            Window tab = new Window();
             tab.runWindow(user);
         }
-        // if the file doesn't exist, we will create a blank Player object and ask them for a name
+        // If the file doesn't exist, we will create a blank Player object and ask them for a name
         catch (FileNotFoundException e) {
             Player user = new Player();
 
-            System.out.println(user.welcome());
-            System.out.print("Name: ");
+            System.out.print(user.welcome());
 
             Scanner input = new Scanner(System.in);
             String name = input.nextLine();
@@ -71,6 +71,10 @@ public class Oasis
             user.setName(name);
             user.setInventory(inventory);
             user.save();
+
+            // Creates a new Player object and runs the program's logic
+            Window tab = new Window();
+            tab.runWindow(user);
         }
     }
 }
