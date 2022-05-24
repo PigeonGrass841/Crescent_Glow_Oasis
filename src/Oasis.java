@@ -1,14 +1,9 @@
 import java.io.File;
-import java.io.FileWriter;
 
-import java.io.IOException;
 import java.io.FileNotFoundException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-
-import javax.swing.JFrame;
 
 public class Oasis
 {
@@ -52,14 +47,14 @@ public class Oasis
             s.close();
 
             // Creates a new Player object and runs the program's logic
-            Player user = new Player(name, inventory, sum);
+            LocalVisitor user = new LocalVisitor(name, inventory, sum);
 
-            Window tab = new Window();
+            TourGuide tab = new TourGuide();
             tab.runWindow(user);
         }
         // If the file doesn't exist, we will create a blank Player object and ask them for a name
         catch (FileNotFoundException e) {
-            Player user = new Player();
+            LocalVisitor user = new LocalVisitor();
 
             System.out.print(user.welcome());
 
@@ -73,7 +68,7 @@ public class Oasis
             user.save();
 
             // Creates a new Player object and runs the program's logic
-            Window tab = new Window();
+            TourGuide tab = new TourGuide();
             tab.runWindow(user);
         }
     }

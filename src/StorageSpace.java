@@ -1,11 +1,7 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.File;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Storage
+public class StorageSpace
 {
     private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray"));
     private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray", "Bait", "Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
@@ -13,12 +9,12 @@ public class Storage
     private ArrayList<String> inventory = new ArrayList<String>();
     private int sum = 15;
 
-    public Storage()
+    public StorageSpace()
     {
         this.inventory = new ArrayList<String>();
     }
 
-    public Storage(ArrayList<String> inventory, int sum)
+    public StorageSpace(ArrayList<String> inventory, int sum)
     {
         this.inventory = inventory;
         this.sum = sum;

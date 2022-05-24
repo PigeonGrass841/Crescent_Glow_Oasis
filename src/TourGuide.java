@@ -1,13 +1,8 @@
-import java.io.File;
-import java.io.FileWriter;
 import java.util.Scanner;
 
-import java.io.IOException;
-import java.io.FileNotFoundException;
-
-public class Window
+public class TourGuide
 {
-    public void runWindow(Player user)
+    public void runWindow(LocalVisitor user)
     {
         System.out.print(user.welcome());
 
@@ -25,13 +20,13 @@ public class Window
             // Choice [1] Go fishing
             if (choice.equals("1"))
             {
-                Fish oasis = new Fish(user);
+                FishPond oasis = new FishPond(user);
                 oasis.fish();
             }
             // Choice [2] Enter the shop
             if (choice.equals("2"))
             {
-                Shop counter = new Shop(user);
+                ItemShop counter = new ItemShop(user);
 
                 System.out.println("\nThanks for coming to the shop, would you like to sell or buy something?");
                 System.out.println("[1] Sell something\n[2] Buy something");

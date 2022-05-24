@@ -2,22 +2,20 @@ import java.io.File;
 import java.io.FileWriter;
 
 import java.io.IOException;
-import java.io.FileNotFoundException;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Player extends Storage
+public class LocalVisitor extends StorageSpace
 {
     private String name;
 
-    public Player()
+    public LocalVisitor()
     {
         super();
         this.name = "";
     }
 
-    public Player(String name, ArrayList<String> inventory, int sum)
+    public LocalVisitor(String name, ArrayList<String> inventory, int sum)
     {
         super(inventory, sum);
         this.name = name;

@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Shop extends Storage
+public class ItemShop extends StorageSpace
 {
-    private Player user;
+    private final LocalVisitor user;
 
-    public Shop(Player user)
+    public ItemShop(LocalVisitor user)
     {
         super();
         this.user = user;

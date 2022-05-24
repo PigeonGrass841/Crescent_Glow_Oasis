@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Fish extends Storage
+public class FishPond extends StorageSpace
 {
-    private Player user;
+    private LocalVisitor user;
 
-    public Fish(Player user)
+    public FishPond(LocalVisitor user)
     {
         this.user = user;
     }
