@@ -1,20 +1,20 @@
 import java.io.File;
 import java.io.FileWriter;
-
 import java.io.IOException;
-
 import java.util.ArrayList;
 
 public class LocalVisitor extends StorageSpace
 {
     private String name;
 
+    // Empty parameter constructor
     public LocalVisitor()
     {
         super();
         this.name = "";
     }
 
+    // Name, inventory, and sum parameter constructor
     public LocalVisitor(String name, ArrayList<String> inventory, int sum)
     {
         super(inventory, sum);
@@ -48,9 +48,9 @@ public class LocalVisitor extends StorageSpace
     public void save()
     {
         try {
-            File f = new File("src/player.data");
+            File f = new File("src/visitor.data");
             f.createNewFile(); // This method will create the file if it does not exist, if it does exist, it does nothing
-            FileWriter fw = new FileWriter("src/player.data");
+            FileWriter fw = new FileWriter("src/visitor.data");
             fw.write(name + "\n");
             fw.write(super.getInventory().toString() + "\n");
             fw.write(String.valueOf(super.getSum()));

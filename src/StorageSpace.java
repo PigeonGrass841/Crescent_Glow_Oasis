@@ -87,4 +87,9 @@ public class StorageSpace
         }
         return baitNum;
     }
+
+    public String toString()
+    {
+        return "\nInventory: " + inventory + "\nSum: " + sum;
+    }
 }

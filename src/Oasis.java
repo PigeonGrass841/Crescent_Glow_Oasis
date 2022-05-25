@@ -10,7 +10,7 @@ public class Oasis
     public static void main(String[] args)
     {
         try {
-            File f = new File("src/player.data");
+            File f = new File("src/visitor.data");
             Scanner s = new Scanner(f);
 
             String name = "";
