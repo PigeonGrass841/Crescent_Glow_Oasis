@@ -99,9 +99,9 @@ public class ItemShop extends StorageSpace
         // the PRICES list, add the item and subtract the corresponding sum
         if ((items != -1) && (user.getSum() >= super.getPRICES().get(items)))
         {
-            System.out.println("Thanks for buying the " + item);
             user.addInventory(item);
             user.subtractSum(super.getPRICES().get(items));
+            System.out.println("Thanks for buying the " + item);
         }
         // Else if the item does not exist in the ITEMS list, print the following statement
         else if (items == -1)
@@ -146,20 +146,18 @@ public class ItemShop extends StorageSpace
             {
                 user.addInventory(item);
                 user.subtractSum(super.getPRICES().get(items));
+                System.out.println("Thanks for buying the " + item);
             }
-
-            System.out.println("Thanks for buying the " + item);
         }
+        // Else if the item does not exist in the ITEMS list, print the following statement
+        else if (items == -1)
+        {
+            System.out.println("That item does not exist in our inventory");
+        }
+        // Else the player's sum is less than the corresponding price in the PRICES list, print the following statement
         else
         {
-            if (items == -1)
-            {
-                System.out.println("That item does not exist in our inventory");
-            }
-            else
-            {
-                System.out.println("There is not enough sum");
-            }
+            System.out.println("There is not enough sum");
         }
     }
 }

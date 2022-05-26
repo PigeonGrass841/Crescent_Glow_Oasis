@@ -10,7 +10,7 @@ public class FishPond extends StorageSpace
         this.user = user;
     }
 
-    // Enables fishing for Player
+    // Enables fishing for the Player
     public void fish()
     {
         // Welcomes the user and provides a brief explanation of how to fish
