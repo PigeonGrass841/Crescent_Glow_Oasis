@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FishPond extends StorageSpace
@@ -20,16 +21,16 @@ public class FishPond extends StorageSpace
 
         // Prompts user input
         Scanner input = new Scanner(System.in);
-        String choice = input.nextLine();
+        String choice = input.nextLine().toLowerCase();
 
         // If the user contains the item [Bait] in their inventory allow them to fish
-        if (user.getInventory().contains("Bait"))
+        if (user.getInventory().contains("bait"))
         {
             // If the user enters c and has the item [Bait] add a random fish to their inventory
             while (choice.equals("c") && user.getBaitNum() > 0)
             {
                 // Removes the item [Bait] from the inventory
-                user.removeInventory("Bait");
+                user.removeInventory("bait");
 
                 // The user has a 50% chance to reel in a fish
                 int index = (int)(Math.random() * super.getFISH().size() * 2);
@@ -52,7 +53,7 @@ public class FishPond extends StorageSpace
 
                 // Prompts the user to fish again
                 System.out.print("Cast?: ");
-                choice = input.nextLine();
+                choice = input.nextLine().toLowerCase();
             }
         }
         // If the user's inventory has no [Bait], stop fishing

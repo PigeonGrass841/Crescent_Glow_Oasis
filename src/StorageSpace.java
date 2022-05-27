@@ -3,8 +3,8 @@ import java.util.Arrays;
 
 public class StorageSpace
 {
-    private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray"));
-    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("Fish", "Blob Fish", "Neon Tetra", "Immortal Jellyfish", "Ornate Sleeper Ray", "Bait", "Rubix Cube", "Imitation Platoon", "Subzero Metro", "Iridescent Lichen", "Crescent Moon Amulet"));
+    private final ArrayList<String> FISH = new ArrayList<String>(Arrays.asList("fish", "blob fish", "neon tetra", "immortal jellyfish", "ornate sleeper ray"));
+    private final ArrayList<String> ITEMS = new ArrayList<String>(Arrays.asList("fish", "blob fish", "neon tetra", "immortal jellyfish", "ornate sleeper ray", "bait", "rubix cube", "imitation platoon", "subzero metro", "iridescent lichen", "crescent moon amulet"));
     private final ArrayList<Integer> PRICES = new ArrayList<Integer>(Arrays.asList(5, 10, 15, 20, 25, 5, 60, 70, 80, 90, 100));
     private ArrayList<String> inventory = new ArrayList<String>();
     private int sum = 15;
@@ -94,7 +94,7 @@ public class StorageSpace
         int baitNum = 0;
         for (String item : inventory)
         {
-            if (item.equals("Bait"))
+            if (item.equals("bait"))
             {
                 baitNum++;
             }

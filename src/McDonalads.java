@@ -1,5 +1,5 @@
 public class McDonalads extends StorageSpace {
-    private boolean dropBurger;
+    private static boolean dropBurger;
 
     // Enables work for the Player
     public void work(LocalVisitor user)

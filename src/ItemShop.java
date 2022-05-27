@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ItemShop extends StorageSpace
@@ -20,7 +21,7 @@ public class ItemShop extends StorageSpace
 
         // Prompts user input
         Scanner input = new Scanner(System.in);
-        String item = input.nextLine();
+        String item = input.nextLine().toLowerCase();
 
         // Retrieves index of item in the player's inventory and the ITEMS list respectively
         int index = user.getInventory().indexOf(item);
@@ -53,7 +54,7 @@ public class ItemShop extends StorageSpace
         for (int i = user.getInventory().size() - 1; i >= 0; i--)
         {
             // Retrieves the item
-            String item = user.getInventory().get(i);
+            String item = user.getInventory().get(i).toLowerCase();
 
             // Retrieves index of item in the player's inventory and the ITEMS list respectively
             int index = user.getInventory().indexOf(item);
@@ -67,7 +68,7 @@ public class ItemShop extends StorageSpace
                 System.out.println("Thanks for selling the " + item);
             }
             // If the item does not exist in the ITEMS list and inventory, print the following statement
-            if (items != -1)
+            if (items == -1)
             {
                 System.out.println("We cannot accept that");
             }
@@ -90,7 +91,7 @@ public class ItemShop extends StorageSpace
 
         // Prompts user input
         Scanner input = new Scanner(System.in);
-        String item = input.nextLine();
+        String item = input.nextLine().toLowerCase();
 
         // Retrieves index of item in the ITEMS list
         int items = super.getITEMS().indexOf(item);
@@ -131,7 +132,7 @@ public class ItemShop extends StorageSpace
 
         // Prompts user input
         Scanner input = new Scanner(System.in);
-        String item = input.nextLine();
+        String item = input.nextLine().toLowerCase();
 
         // Retrieves index of item in the ITEMS list
         int items = super.getITEMS().indexOf(item);
@@ -146,8 +147,8 @@ public class ItemShop extends StorageSpace
             {
                 user.addInventory(item);
                 user.subtractSum(super.getPRICES().get(items));
-                System.out.println("Thanks for buying the " + item);
             }
+            System.out.println("Thanks for buying the " + item);
         }
         // Else if the item does not exist in the ITEMS list, print the following statement
         else if (items == -1)
