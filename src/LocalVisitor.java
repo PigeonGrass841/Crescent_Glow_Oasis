@@ -104,7 +104,7 @@ public class LocalVisitor extends StorageSpace
             }
             scan.close();
 
-            // Creates a new Player object
+            // Creates and returns a new Player object
             return new LocalVisitor(user, space, value);
         }
         catch (FileNotFoundException e)
@@ -125,6 +125,7 @@ public class LocalVisitor extends StorageSpace
             user.setInventory(inventory);
             user.save();
 
+            // Returns the Player object
             return user;
         }
 
