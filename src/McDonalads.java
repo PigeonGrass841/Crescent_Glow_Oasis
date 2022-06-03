@@ -27,5 +27,7 @@ public class McDonalads extends StorageSpace {
         {
             System.out.println("\nMcDonalads refuses to hire you. You dropped a burger after all :(");
         }
+        // Saves the user's data
+        user.save();
     }
 }

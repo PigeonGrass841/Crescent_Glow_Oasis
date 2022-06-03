@@ -61,6 +61,8 @@ public class FishPond extends StorageSpace
         {
             System.out.println("\nYou do not possess enough [Bait] to continue fishing. Buy more [Bait] at the shop");
         }
+        // Saves the user's data
+        user.save();
         // Termination statement
         System.out.println("\nLeaving the oasis . . .");
     }

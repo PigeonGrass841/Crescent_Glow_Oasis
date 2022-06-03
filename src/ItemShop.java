@@ -44,6 +44,8 @@ public class ItemShop extends StorageSpace
         {
             System.out.println("We cannot accept that");
         }
+        // Saves the user's data
+        user.save();
     }
 
     // Removes each item from the inventory and increments the sum by their respective prices
@@ -73,6 +75,8 @@ public class ItemShop extends StorageSpace
                 System.out.println("We cannot accept that");
             }
         }
+        // Saves the user's data
+        user.save();
     }
 
     // Adds the item to the inventory and decrements the sum by its corresponding price
@@ -114,6 +118,8 @@ public class ItemShop extends StorageSpace
         {
             System.out.println("There is not enough sum");
         }
+        // Saves the user's data
+        user.save();
     }
 
     //// Adds the item to the inventory and decrements the sum by their respective prices until the price exceeds the sum
@@ -160,5 +166,7 @@ public class ItemShop extends StorageSpace
         {
             System.out.println("There is not enough sum");
         }
+        // Saves the user's data
+        user.save();
     }
 }
